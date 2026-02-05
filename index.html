@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inder Singh Daffoti | 3D Animated CV</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>Inder Singh Daffoti</h1>
+      <p>Noida, UP, India · +91-8395808330 · indersin30@gmail.com</p>
+      <p class="sub">3D animated CV journey — runner opens each milestone and presents your story.</p>
+      <button id="startBtn">Start 3D CV Journey</button>
+    </header>
+
+    <main>
+      <section class="scene-shell">
+        <div class="scene" id="scene">
+          <div class="sky"></div>
+          <div class="mountain mountain-a"></div>
+          <div class="mountain mountain-b"></div>
+          <div class="track"></div>
+          <div class="runner" id="runner" aria-label="Runner"></div>
+          <div class="checkpoints" id="checkpoints"></div>
+        </div>
+      </section>
+
+      <section class="timeline" id="timeline"></section>
+
+      <section class="how-to-run">
+        <h2>How to run this code</h2>
+        <ol>
+          <li>Open terminal in this folder.</li>
+          <li>Run <code>python3 -m http.server 8000</code>.</li>
+          <li>Open <code>http://localhost:8000</code> in browser.</li>
+          <li>Click <b>Start 3D CV Journey</b>.</li>
+        </ol>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
