@@ -1,0 +1,235 @@
+:root {
+  --bg: #020617;
+  --text: #e2e8f0;
+  --accent: #38bdf8;
+  --good: #22c55e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top, #0f172a 0%, #020617 60%);
+}
+
+.hero {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+}
+
+.hero p {
+  margin: 0.45rem auto;
+  max-width: 58rem;
+}
+
+.hero .sub {
+  opacity: 0.9;
+}
+
+#startBtn {
+  margin-top: 0.8rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #082f49;
+  font-weight: 700;
+  padding: 0.75rem 1.1rem;
+  cursor: pointer;
+}
+
+main {
+  width: min(1220px, 95vw);
+  margin: 0 auto 2rem;
+}
+
+.scene-shell {
+  perspective: 1200px;
+}
+
+.scene {
+  --cam-x: 0px;
+  position: relative;
+  min-height: 430px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border: 1px solid #334155;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #0b1020 0%, #020617 100%);
+  transform-style: preserve-3d;
+}
+
+.sky {
+  position: absolute;
+  inset: 0 0 48% 0;
+  background: linear-gradient(180deg, #1d4ed8, #0ea5e9 70%, transparent);
+  opacity: 0.45;
+}
+
+.mountain {
+  position: absolute;
+  bottom: 120px;
+  width: 380px;
+  height: 170px;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  opacity: 0.25;
+}
+
+.mountain-a {
+  left: 18%;
+  background: #1e293b;
+  transform: translateX(calc(var(--cam-x) * -0.35));
+}
+
+.mountain-b {
+  left: 58%;
+  background: #334155;
+  transform: translateX(calc(var(--cam-x) * -0.25));
+}
+
+.track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 96px;
+  height: 12px;
+  background: repeating-linear-gradient(90deg, #64748b, #64748b 26px, #475569 26px, #475569 46px);
+  opacity: 0.7;
+}
+
+.runner {
+  position: absolute;
+  left: 26px;
+  bottom: 108px;
+  width: 52px;
+  height: 84px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #f59e0b 0%, #f97316 75%);
+  box-shadow: 0 0 0 6px rgba(251, 191, 36, 0.24);
+  transform: rotateY(-18deg);
+  transition: transform 0.7s ease;
+}
+
+.runner::before,
+.runner::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 30px;
+  bottom: -22px;
+  background: #fb7185;
+  border-radius: 8px;
+  animation: runLeg 0.48s ease-in-out infinite alternate;
+}
+
+.runner::before { left: 9px; }
+.runner::after { right: 9px; animation-delay: 0.24s; }
+
+@keyframes runLeg {
+  from { transform: rotate(15deg); }
+  to { transform: rotate(-15deg); }
+}
+
+.checkpoints {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 46px;
+  padding: 48px 38px 150px 110px;
+}
+
+.checkpoint {
+  width: 330px;
+  min-height: 230px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  padding: 1rem;
+  transform: translateY(10px) rotateY(10deg) scale(0.97);
+  transform-origin: left center;
+  opacity: 0.55;
+  transition: 0.45s ease;
+  white-space: normal;
+}
+
+.checkpoint h2 {
+  margin: 0 0 0.6rem;
+  font-size: 1.05rem;
+}
+
+.checkpoint ul {
+  margin: 0;
+  padding-left: 1rem;
+  line-height: 1.35;
+  font-size: 0.9rem;
+}
+
+.door {
+  background: linear-gradient(180deg, #7c2d12, #431407);
+  border-color: #fdba74;
+}
+
+.cloud {
+  background: linear-gradient(180deg, #e2e8f0 0%, #bfdbfe 100%);
+  color: #0f172a;
+  border-radius: 50px;
+}
+
+.tower {
+  background: linear-gradient(180deg, #14532d, #052e16);
+  border-color: #4ade80;
+}
+
+.checkpoint.active {
+  opacity: 1;
+  transform: translateY(0) rotateY(0deg) scale(1);
+  border-color: var(--good);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+}
+
+.timeline,
+.how-to-run {
+  margin-top: 1rem;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.76);
+  padding: 0.9rem 1rem;
+}
+
+.timeline-row {
+  margin: 0 0 0.35rem;
+}
+
+.timeline-row:last-child {
+  margin-bottom: 0;
+}
+
+.how-to-run h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.how-to-run ol {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.how-to-run code {
+  background: rgba(148, 163, 184, 0.25);
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+}
+
+@media (max-width: 900px) {
+  .checkpoint {
+    width: 290px;
+    min-height: 250px;
+  }
+}
